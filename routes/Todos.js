@@ -53,7 +53,7 @@ router.delete('/:id', auth, async (req, res) => {
     if (todo.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: 'User not authorized' });
     }
-    await Todo.findByIdAndRemove(req.params.id);
+    await Todo.findByIdAndDelete(req.params.id);  // Changed this line
     res.json({ msg: 'Todo removed' });
   } catch (err) {
     console.error(err.message);
